@@ -3,6 +3,8 @@ CSS is a experiment in making flux more like React, until it's not really flux a
 
 ### list-store.coffee
 
+This store holds onto a list based on some id stored elsewhere.  it does not cache old list data and simply requests new data when the `list_id` changes.  
+
 ```coffee
 CSS = require("cascading-singleton-stores")
 Api = require("./api")
@@ -41,6 +43,10 @@ CSS.createStore "ListStore",
 ```
 
 ### items-cache-store.coffee
+
+This store holds onto a cache of items (which have to lazy loaded and are not returned in the list response).  it caches these items responses so that it does not rerequest items when the list changes.  
+
+This store exposes a view which contains the list data merged with item responses.  
 
 ```coffee
 
@@ -87,6 +93,8 @@ CSS.createStore "ListWithItemsStore",
 
 ### list-view.coffee
 
+This react component takes props and can display a list of items.  
+
 ```coffee
 React = require("react")
 {div, span} = React.DOM
@@ -109,6 +117,8 @@ React.createClass
 ```
 
 ### list-controller.coffee
+
+This controller binds the list data and onClick callbacks to the display component
 
 ```coffee
 CSS = require("cascading-singleton-stores")
