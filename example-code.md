@@ -126,7 +126,7 @@ ListWithItemsStore = require("./list-with-items-store")
 ListView = require("./list-view")
 
 ListController = CSS.connect ListView, -> 
-   list: ListWithItemsStore.getListWithItems
+   list: ListWithItemsStore.getListWithItems()
    onItemClick: => alert(1)
       
 ```
